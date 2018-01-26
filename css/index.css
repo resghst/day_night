@@ -1,0 +1,63 @@
+/* Initialize */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  /* background: #000; */
+  min-height: 100vh;
+  min-width: 100vw;
+  margin: 0;
+}
+
+.back{
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  left: 0;
+}
+
+.back::before{
+  content: '';
+  position: relative;
+  width: 0.6%;
+  /* height: 100%; */
+  background: #ccc;
+  transform: translateX(-0.8%);
+  display: flex;
+  left: 50%;
+}
+
+.day{
+  position: relative;
+  left: -0.4%;
+  height: 100vh;
+  width: 50vw;
+  background: #B0E3FF;
+}
+
+.night{
+  height: 100vh;
+  width: 50vw;
+  background: #111;
+}
+
+.checkbtn{
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  z-index: 1;
+  color: #bbb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#switch:checked ~ .back .left {
+  background-color: #B0E3FF;
+}
+#switch:checked ~ .back .right {
+  background-color: #111;
+}
