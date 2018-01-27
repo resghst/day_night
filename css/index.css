@@ -4,6 +4,8 @@
 }
 
 body {
+  overflow-x: hidden;
+  overflow-y: hidden;
   min-height: 100vh;
   min-width: 100vw;
   margin: 0;
@@ -22,27 +24,32 @@ body {
 .back::before{
   content: '';
   position: relative;
-  width: 0.6%;
+  width: 0.4%;
   background: #ccc;
-  transform: translateX(-0.8%);
+  transform: translateX(-0.4%);
   display: flex;
   left: 50%;
 }
 
-.day{
-  position: relative;
-  left: -0.4%;
+.day, .night{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 100vh;
   width: 50vw;
+  transition: background linear .5s;
+}
+
+.day{
+  left: -0.3%;
+  position: relative;
   background: #B0E3FF;
-  transition: background linear .25s;
 }
 
 .night{
-  height: 100vh;
-  width: 50vw;
+  left: 0.3%;
+  position: relative;
   background: #111;
-  transition: background linear .25s;
 }
 
 .checkbtn{
@@ -61,12 +68,12 @@ body {
 }
 
 #switch:checked ~ .back .night {
-  transition: background-color linear .25s;
+  transition: background-color linear .5s;
   background-color: #B0E3FF;
 }
 
 #switch:checked ~ .back .day {
-  transition: background-color linear .25s;
+  transition: background-color linear .5s;
   background-color: #111;
 }
 
@@ -104,23 +111,44 @@ label{
 }
 
 .sun, .moon{
-  display: flex;
   position: relative;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  height: 300px;
-  width: 300px;
+  height: 100px;
+  width: 100px;
   border-radius: 50%;
 }
 
 .sun{
-  z-index: 2;
   background: gold;
 }
 
 .moon{
-  z-index: 3;
   background: silver;
+}
+
+.back .day .moon{
+  display: none; 
+}
+
+.back .night .sun{
+  display: none; 
+}
+
+#switch:checked ~ .back .day .sun{
+  display: none; 
+}
+
+#switch:checked ~ .back .day .moon{
+  display: block; 
+}
+
+#switch:checked ~ .back .night .moon{
+  display: none; 
+}
+
+#switch:checked ~ .back .night .sun{
+  display: block;
 }
